@@ -1,9 +1,13 @@
-function App() {
+import { Outlet } from "react-router-dom"
 
+function App() {
   return (
-    <>
-      <h1 className="font-bold text-red-500">React App</h1>
-    </>
+    <div className="w-full h-full">
+      <div>{/* Sidebar with navigation liks */}</div>
+      <div className="view_wrapper">
+        <Outlet />
+      </div>
+    </div>
   )
 }
 
