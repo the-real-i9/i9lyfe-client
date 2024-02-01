@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 
-function App() {
+export default function Root() {
   return (
     <div className="w-full h-full">
       <div>{/* Sidebar with navigation liks */}</div>
@@ -10,5 +10,3 @@ function App() {
     </div>
   )
 }
-
-export default App
