@@ -2,7 +2,7 @@ import axios from "axios"
 import { useRef, useState } from "react"
 import { useFetcher } from "react-router-dom"
 
-export default function CreatePostPage() {
+export default function CreatePost() {
   const fetcher = useFetcher()
 
   const [postType, setPostType] = useState("Photo")
