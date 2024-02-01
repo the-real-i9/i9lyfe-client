@@ -70,10 +70,11 @@ const router = createBrowserRouter([
           },
           {
             path: "/auth/signin",
-            element: <Signin />
+            element: <Signin />,
+            action: Actions.userSignin,
           },
           {
-            path: "/auth/forgort_password",
+            path: "/auth/forgot_password",
             element: <ConfirmPwdrEmail />
           },
           {

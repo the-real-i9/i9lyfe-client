@@ -55,15 +55,41 @@ export async function emailVerification({ request }) {
  */
 export async function userRegistration({ request }) {
   try {
-    const { username, password, name, birthday, bio } = Object.fromEntries((await request.formData()).entries)
+    const { username, password, name, birthday, bio } = Object.fromEntries((await request.formData()).entries())
 
-    await axios.post(
+    const data = await axios.post(
       "http://localhost:5000/api/auth/signup?stage=user_registration",
       { username, password, name, birthday, bio },
       { withCredentials: true }
     )
 
+    localStorage.setItem("i9lyfe--user-jwt", data.jwtToken)
+
     return redirect("/auth/signup/upload_your_profile_picture")
+  } catch (error) {
+    const { reason } = error.response.data
+    console.log(reason)
+    return { error: reason }
+  }
+}
+
+/**
+ * @param {object} param0
+ * @param {Request} param0.request
+ */
+export async function userSignin({ request }) {
+  try {
+    const { email, password } = Object.fromEntries((await request.formData()).entries())
+
+    const response = await axios.post(
+      "http://localhost:5000/api/auth/signin",
+      { email, password },
+      { withCredentials: true }
+    )
+
+    localStorage.setItem("i9lyfe--user-jwt", response.data.jwtToken)
+
+    return redirect("/")
   } catch (error) {
     const { reason } = error.response.data
     console.log(reason)
