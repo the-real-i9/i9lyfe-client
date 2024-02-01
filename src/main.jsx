@@ -20,7 +20,7 @@ import ResetPassword from './pages/auth/ResetPassword'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    // path: "/",
     element: <Root />,
     errorElement: <Error />,
     children: [
@@ -40,36 +40,36 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/auth",
+        // path: "/auth",
         element: <Auth />,
         errorElement: <Error />,
         children: [
           {
-            path: "/signup",
+            path: "/auth/signup",
             element: <Signup />
           },
           {
-            path: "/verify_email",
+            path: "/auth/verify_email",
             element: <VerifyEmail />
           },
           {
-            path: "/update_your_profile",
+            path: "/auth/update_your_profile",
             element: <ProfileInfo />
           },
           {
-            path: "upload_your_profile_picture",
+            path: "/auth/upload_your_profile_picture",
             element: <UploadProfilePicture />
           },
           {
-            path: "/signin",
+            path: "/auth/signin",
             element: <Signin />
           },
           {
-            path: "forgort_password",
+            path: "/auth/forgort_password",
             element: <ConfirmPwdrEmail />
           },
           {
-            path: "reset_your_password",
+            path: "/auth/reset_your_password",
             element: <ResetPassword />
           }
         ]
