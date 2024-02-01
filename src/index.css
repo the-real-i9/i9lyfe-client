@@ -26,6 +26,12 @@
 @tailwind base;
 
 @layer base {
+  @media screen and (max-width: 768px) {
+    * {
+      scrollbar-width: 0;
+    }
+  }
+  
   html,
   body,
   #root {
