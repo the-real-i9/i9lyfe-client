@@ -31,6 +31,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
+        loader: Loaders.appInit,
+        shouldRevalidate: () => false,
         errorElement: <Error />,
         children: [
           {
