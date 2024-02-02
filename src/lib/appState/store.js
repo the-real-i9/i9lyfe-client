@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import homeFeedSlice from "./slices/homeFeedSlice.js"
+import homeFeedSlice from "./slices/homeFeedSlice"
+import clientUserSlice from "./slices/clientUserSlice"
 
 export default configureStore({
   reducer: {
-    home_feed: homeFeedSlice.reducer,
+    homeFeed: homeFeedSlice.reducer,
+    clientUser: clientUserSlice.reducer
   },
 })

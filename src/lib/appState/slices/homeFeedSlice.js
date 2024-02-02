@@ -1,19 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const homeFeedSlice = createSlice({
-  name: "home_feed",
+  name: "homeFeed",
   initialState: {
     feedPosts: [],
     newPostsCount: 0,
     newPostsBuffer: [],
   },
   reducers: {
-    supplyFeed: ({ feedPosts }, action) => {},
-    supplyBuffer: ({ newPostsBuffer }, action) => {},
-    setCount: ({ newPostsCount }, action) => {},
+    initHomeFeed: (state, action) => {
+      state.feedPosts = action.payload
+    },
+    provideNewPostsBuffer: (state, action) => {
+      const updated = [...action.payload, ...state.newPostsBuffer]
+      state.newPostsBuffer = updated
+      state.newPostsCount = updated.length
+    },
+    consumeNewPostsBuffer: (state) => {
+      state.feedPosts = [...state.newPostsBuffer, ...state.feedPosts]
+      state.newPostsBuffer = []
+      state.newPostsCount = 0
+    },
+    appendOldPosts: (state, action) => {
+      const updated = [...state.feedPosts, ...action.payload]
+      state.feedPosts = updated
+    }
   },
 })
 
-export const { supplyFeed, supplyBuffer, setCount } = homeFeedSlice.actions
+export const { initHomeFeed, provideNewPostsBuffer, consumeNewPostsBuffer } = homeFeedSlice.actions
 
 export default homeFeedSlice
